@@ -1,4 +1,4 @@
-package com.example.week4day3hw;
+package com.example.week4day3hw.view.adapters;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.example.week4day3hw.R;
 import com.example.week4day3hw.model.FlickerObj.FlickerObj;
 import com.example.week4day3hw.model.FlickerObj.ItemsItem;
+import com.example.week4day3hw.view.activities.imageActivity.imageActivity;
 
 import java.util.ArrayList;
 
@@ -105,6 +107,7 @@ public class ItemsRVAdapter extends RecyclerView.Adapter<ItemsRVAdapter.ViewHold
 
         @Override
         public boolean onLongClick(final View view) {
+
 
             //item.getMedia().getM();
             DialogInterface.OnClickListener anythingyouwant = new DialogInterface.OnClickListener() {

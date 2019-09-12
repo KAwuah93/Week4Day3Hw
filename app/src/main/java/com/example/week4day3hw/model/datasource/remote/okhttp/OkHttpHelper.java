@@ -20,7 +20,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class OkHttpHelper {
     //Set the URL for the calls
-    public static final String FLICKR_IMG_URL = "https://api.flickr.com/services/feeds/photos_public.gne?tag=kitten&format=json&nojsoncallback=1";
+    public static final String FLICKR_IMG_URL = "https://api.flickr.com/services/feeds/photos_public.gne?tag=fish&format=json&nojsoncallback=1";
     public static OkHttpClient getClient() {
         //used to log the information seperate from the actual function
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();

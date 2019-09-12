@@ -1,4 +1,4 @@
-package com.example.week4day3hw;
+package com.example.week4day3hw.view.activities.imageActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.week4day3hw.R;
 
 public class imageActivity extends AppCompatActivity {
     ImageView imageView;

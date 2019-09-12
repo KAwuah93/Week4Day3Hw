@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     android:id="@+id/bgImage"
     android:src="@mipmap/ic_launcher_round"
-    tools:context=".imageActivity">
+    tools:context=".view.activities.imageActivity.imageActivity">
 
 </ImageView>

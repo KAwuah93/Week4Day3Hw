@@ -1,16 +1,15 @@
-package com.example.week4day3hw;
+package com.example.week4day3hw.view.activities.mainactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
+import com.example.week4day3hw.view.adapters.ItemsRVAdapter;
+import com.example.week4day3hw.R;
+import com.example.week4day3hw.model.FlickerObj.FlickerObj;
 import com.example.week4day3hw.model.FlickerObj.ItemsItem;
-import com.example.week4day3hw.model.datasource.remote.okhttp.OkHttpHelper;
-import com.example.week4day3hw.model.datasource.remote.okhttp.OkHttpHelperTask;
 import com.example.week4day3hw.model.event.OkHttpFlickrEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -19,12 +18,12 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainActivityContract {
 
     public static final String TAG = "TAG_ACT_MAIN";
     RecyclerView recyclerView;
-    //TODO create the object to translate this over-
     ItemsRVAdapter adapter;
+    MainActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Starting the threading for ok
-        OkHttpHelper.makeAsyncOkHttpCall();
-        OkHttpHelperTask okHttpHelperTask = new OkHttpHelperTask();
-        okHttpHelperTask.execute();
+//        OkHttpHelper.makeAsyncOkHttpCall();
+//        OkHttpHelperTask okHttpHelperTask = new OkHttpHelperTask();
+//        okHttpHelperTask.execute();
 
         recyclerView = findViewById(R.id.rvFlickr);
 
@@ -43,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ItemsRVAdapter(new ArrayList<ItemsItem>());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        presenter = new MainActivityPresenter(this);
 
+        presenter.getFlickobj();
     }
 
     @Override
@@ -63,4 +64,16 @@ public class MainActivity extends AppCompatActivity {
         adapter.addToList(event.getFlickrResponse());
     }
 
+    @Override
+    public void onFlickrReponse(final FlickerObj flickerObj) {
+        if(flickerObj != null){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.addToList(flickerObj);
+                }
+            });
+
+        }
+    }
 }
